@@ -18,3 +18,9 @@ echo mali9219@$ip
 
 ssh-keygen -t ed25519 -C mali9219$ip
 ssh-copy-id -i ~/.ssh/id_ed25519.pub mali9219@$ip
+
+echo "[web]" >> hosts
+echo "$ip" >> hosts
+
+sudo mv hosts /etc/ansible
+ansible-playbook web.yml --ask-become-pass
