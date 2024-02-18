@@ -1,0 +1,22 @@
+---
+- hosts: web
+  become: true
+  tasks:
+    - name: update debian
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+    - name: install apache2
+      apt:
+        name: apache2
+        state: present
+        
+    - name: remove existing index.html
+      file:
+        path: /var/www/html/index.html
+        state: absent
+
+    - name: copyt file to destination
+      copy:
+        src: /home/mali9219/index.html
+        dest: /var/www/html/index.html
