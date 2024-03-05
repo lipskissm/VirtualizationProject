@@ -1,7 +1,7 @@
 #!/bin/bash
-
+read -s -p "Enter your password: " PASSWORD
 # Instantiate the template
-vm_id=$(onetemplate instantiate "2274" --user mali9219 --password "slaptazodis" --endpoint https://grid5.mif.vu.lt/cloud3/RPC2)
+vm_id=$(onetemplate instantiate "2274" --user mali9219 --password "$PASSWORD" --endpoint https://grid5.mif.vu.lt/cloud3/RPC2)
 mid=$(echo $vm_id | cut -d ' ' -f 3)
 echo $mid
 sleep 45
